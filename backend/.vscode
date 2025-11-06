@@ -1,0 +1,7 @@
+{
+  "envWatcher.enabled": true,
+  "envWatcher.watchFile": ".env*",
+  "envWatcher.restartCommand": "npm run dev",
+  "envWatcher.autoRestart": true,
+  "envWatcher.debounceTime": 500
+}
