@@ -10,8 +10,13 @@ import {
 
 const router = express.Router();
 
+
+
+// Pubilc Route
 router.get("/profile/:username", getCurrentProfile);
 
+
+// Protected Routes
 router.put("/profile", protectedRoute, updateProfile);
 
 router.post("/me", protectedRoute, getCurrentProfile);
