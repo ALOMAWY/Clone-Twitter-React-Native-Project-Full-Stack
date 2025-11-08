@@ -45,7 +45,8 @@ export const syncUser = asyncHandler(async (req, res) => {
     email: clerkUser.emailAddresses[0].emailAddress,
     firstName: clerkUser.firstName || "",
     lastName: clerkUser.lastName || "",
-    usernam: clerkUser.emailAddresses[0].emailAddress.split("@")[0],
+    username:
+      clerkUser.emailAddresses[0].emailAddress.split("@")[0] + "_" + Date.now(),
     pictureProfile: clerkUser.imageUrl || "",
   };
 
@@ -57,11 +58,11 @@ export const followUser = asyncHandler(async (req, res) => {
   const { userId } = getAuth(req);
   const { targetUserId } = req.params;
 
-  if (userId === targetUserId)
-    return res.status(400).json({ error: "you cant follow yourself" });
-
   const currentUser = await User.findOne({ clerkId: userId });
   const targetUser = await User.findById(targetUserId);
+
+  if (currentUser._id.toString() === targetUserId)
+    return res.status(400).json({ error: "you cant follow yourself" });
 
   if (!currentUser || !targetUser)
     return res.send(404).json({ error: "User not found" });
@@ -102,11 +103,9 @@ export const followUser = asyncHandler(async (req, res) => {
     });
   }
 
-  res
-    .send(200)
-    .json({
-      message: isFollowing
-        ? "User Unfollowing successfully"
-        : "User Following Successfully",
-    });
+  res.send(200).json({
+    message: isFollowing
+      ? "User Unfollowing successfully"
+      : "User Following Successfully",
+  });
 });
