@@ -1,10 +1,10 @@
 import asyncHandler from "express";
 import { getAuth } from "@clerk/express";
 
-import { User } from "../models/user.model";
-import { Post } from "../models/post.model";
-import { Comment } from "../models/comment.model";
-import { Notification } from "../models/notification.model";
+import { User } from "../models/user.model.js";
+import { Post } from "../models/post.model.js";
+import { Comment } from "../models/comment.model.js";
+import { Notification } from "../models/notification.model.js";
 
 import cloudinary from "../config/cloudinary";
 
