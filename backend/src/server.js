@@ -5,6 +5,7 @@ import { clerkMiddleware } from "@clerk/express";
 // Routes
 import userRoute from "./routes/user.route.js";
 import postRoute from "./routes/post.route.js";
+import commentsRoute from "./routes/comment.route.js";
 
 import { connectDB } from "./config/db.js";
 import { ENV } from "./config/env.js";
@@ -25,6 +26,9 @@ app.use("/api/users", userRoute);
 
 // Post Routes
 app.use("/api/posts", postRoute);
+
+// Comment Routes
+app.use("/api/comments", commentsRoute);
 
 
 // Error Handling Middleware
