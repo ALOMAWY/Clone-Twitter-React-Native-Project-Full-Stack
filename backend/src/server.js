@@ -5,8 +5,10 @@ import { clerkMiddleware } from "@clerk/express";
 // Routes
 import userRoute from "./routes/user.route.js";
 import postRoute from "./routes/post.route.js";
-import commentRoute from "./routes/comment.route.js";
-import notificationRoute from "./routes/notification.route.js";
+
+// import commentRoute from "./routes/comment.route.js";
+
+// import notificationRoute from "./routes/notification.route.js";
 
 
 import { connectDB } from "./config/db.js";
