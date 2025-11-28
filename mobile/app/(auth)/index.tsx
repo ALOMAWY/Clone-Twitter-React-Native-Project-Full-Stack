@@ -1,5 +1,5 @@
 import { useSocialAuth } from "@/hooks/useSocialAuth";
-import { use, useState } from "react";
+
 import {
   ActivityIndicator,
   Image,
@@ -43,7 +43,10 @@ export default function App() {
                 <ActivityIndicator size={"small"} color={"#4285f4"} />
               ) : (
                 <View>
-                  <View className="flex-row items-center justify-center">
+                  <View
+                    className="flex-row items-center justify-center"
+                    style={{ height: 35 }}
+                  >
                     <Image
                       source={require("../../assets/images/google.png")}
                       className="size-10 mr-3"
@@ -74,7 +77,10 @@ export default function App() {
                 <ActivityIndicator size={"small"} color={"#4285f4"} />
               ) : (
                 <View>
-                  <View className="flex-row items-center justify-center">
+                  <View
+                    className="flex-row items-center justify-center"
+                    style={{ height: 35 }}
+                  >
                     <Image
                       source={require("../../assets/images/apple.png")}
                       className="size-8 mr-3"
