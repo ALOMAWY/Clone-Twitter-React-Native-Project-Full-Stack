@@ -48,14 +48,19 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
   try {
     await connectDB();
-    app.listen(PORT, () =>
-      console.log("Server-is-up & running on PORT:" + PORT)
-    );
+
+    if (ENV.NODE_ENV !== "production") {
+      // Listen on specified PORT in non-production (Local Development) environments
+      app.listen(PORT, () =>
+        console.log("Server-is-up & running on PORT:" + PORT)
+      );
+    }
   } catch (error) {
     console.error("", error);
   }
 };
 
-
-
 startServer()
+
+// Expost App For Vercel Deployment
+export default app;
