@@ -13,6 +13,7 @@ const TapsLayout = () => {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false,
         tabBarActiveTintColor: "#1da1f2",
         tabBarInactiveTintColor: "#657786",
         tabBarStyle: {
