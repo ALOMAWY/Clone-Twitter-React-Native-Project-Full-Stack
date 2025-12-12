@@ -49,14 +49,14 @@ const startServer = async () => {
   try {
     await connectDB();
 
-    if (ENV.NODE_ENV !== "production") {
-      // Listen on specified PORT in non-production (Local Development) environments
-      app.listen(PORT, () =>
-        console.log("Server-is-up & running on PORT:" + PORT)
-      );
-    }
+    // if (ENV.NODE_ENV !== "production") {
+    // Listen on specified PORT in non-production (Local Development) environments
+    app.listen(PORT, () =>
+      console.log("Server-is-up & running on PORT:" + PORT)
+    );
+    // }
   } catch (error) {
-    console.error("", error);
+    console.error("Error", error);
   }
 };
 

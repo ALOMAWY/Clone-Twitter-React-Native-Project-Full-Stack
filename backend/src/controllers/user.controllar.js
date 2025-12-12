@@ -1,4 +1,4 @@
-import asyncHandler from "express";
+import asyncHandler from "express-async-handler";
 
 import { clerkClient, getAuth } from "@clerk/express";
 
@@ -39,7 +39,9 @@ export const syncUser = asyncHandler(async (req, res) => {
   const existingUser = await User.findOne({ clerkId: userId });
 
   if (existingUser)
-    return res.status(200).json({ error: "User Alraedy Exists" });
+    return res
+      .status(200)
+      .json({ user: existingUser, message: "User Alraedy Exists" });
 
   const clerkUser = await clerkClient.users.getUser(userId);
 
