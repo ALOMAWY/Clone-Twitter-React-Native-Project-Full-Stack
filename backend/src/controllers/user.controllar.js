@@ -70,7 +70,7 @@ export const followUser = asyncHandler(async (req, res) => {
     return res.status(400).json({ error: "you cant follow yourself" });
 
   if (!currentUser || !targetUser)
-    return res.send(404).json({ error: "User not found" });
+    return res.status(404).json({ error: "User not found" });
 
   const isFollowing = currentUser.following.includes(targetUserId);
 
@@ -108,7 +108,7 @@ export const followUser = asyncHandler(async (req, res) => {
     });
   }
 
-  res.send(200).json({
+  res.status(200).json({
     message: isFollowing
       ? "User Unfollowing successfully"
       : "User Following Successfully",
