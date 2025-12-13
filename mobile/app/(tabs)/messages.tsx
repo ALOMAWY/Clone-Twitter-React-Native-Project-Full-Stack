@@ -1,14 +1,14 @@
 import {
-  View,
-  Text,
   TextInput,
   Alert,
   ScrollView,
   TouchableOpacity,
   Image,
   Modal,
+  View,
+  Text,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   SafeAreaView,
   useSafeAreaInsets,
@@ -239,15 +239,3 @@ const MessagesScreen = () => {
 };
 
 export default MessagesScreen;
-import { View, Text } from 'react-native'
-import React from 'react'
-
-const messages = () => {
-  return (
-    <View>
-      <Text>messages</Text>
-    </View>
-  )
-}
-
-export default message
