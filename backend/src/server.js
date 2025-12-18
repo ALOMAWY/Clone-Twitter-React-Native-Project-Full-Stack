@@ -20,7 +20,7 @@ app.use(express.json());
 
 app.use(clerkMiddleware());
 
-app.use(arcjetMiddleware);
+// app.use(arcjetMiddleware);
 
 app.get("/", (req, res) => {
   res.send("Hello From SERVER");
