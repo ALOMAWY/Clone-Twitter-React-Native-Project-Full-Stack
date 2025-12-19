@@ -17,8 +17,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(clerkMiddleware());
-
+app.use("/api", clerkMiddleware());
 // app.use(arcjetMiddleware);
 
 app.get("/", (req, res) => {
