@@ -5,7 +5,7 @@ const protectedRoute = (req, res, next) => {
 
   if (!userId) {
     return res
-      .status(401)
+      .status(402)
       .json({ message: "Unauthorized - you must be logged in" });
   }
 
