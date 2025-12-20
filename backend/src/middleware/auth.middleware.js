@@ -1,15 +1,9 @@
-import { getAuth } from "@clerk/express";
-
-const protectedRoute = (req, res, next) => {
-  const { userId } = getAuth(req);
-
-  if (!userId) {
+const protectedRoute = async (req, res, next) => {
+  if (!req.auth().isAuthenticated) {
     return res
-      .status(402)
+      .status(401)
       .json({ message: "Unauthorized - you must be logged in" });
   }
-
-  req.userId = userId; // optional useful
   next();
 };
 
