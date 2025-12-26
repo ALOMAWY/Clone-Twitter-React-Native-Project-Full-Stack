@@ -9,7 +9,7 @@ import commentRoute from "./routes/comment.route.js";
 import notificationRoute from "./routes/notification.route.js";
 import { connectDB } from "./config/db.js";
 import { ENV } from "./config/env.js";
-import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
+
 
 const app = express();
 const PORT = ENV.PORT;
@@ -20,10 +20,10 @@ app.use(express.json());
 
 app.use(clerkMiddleware());
 
-// app.use(arcjetMiddleware);
+
 
 app.get("/", (req, res) => {
-  res.send("Hello From SERVER");
+  res.send("Hello From SERVER , no ARCJET");
 });
 
 // User Routes
