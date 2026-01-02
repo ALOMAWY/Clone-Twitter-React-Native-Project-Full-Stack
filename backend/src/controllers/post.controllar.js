@@ -73,7 +73,7 @@ export const createPost = asyncHandler(async (req, res) => {
       .json({ error: "Post must contain either text or image" });
   }
 
-  const user = User.findOne({ clerkId: userId });
+  const user = await User.findOne({ clerkId: userId });
 
   if (!user) return res.status(404).json({ error: "User not found" });
 
@@ -82,7 +82,7 @@ export const createPost = asyncHandler(async (req, res) => {
   if (imageFile) {
     try {
       const base64Image = `data:${
-        imageFile.mimeType
+        imageFile.mimetype
       };base64,${imageFile.buffer.toString("base64")}`;
 
       const uploadResponse = await cloudinary.uploader.upload(base64Image, {

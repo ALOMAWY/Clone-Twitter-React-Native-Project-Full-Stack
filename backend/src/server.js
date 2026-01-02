@@ -9,6 +9,7 @@ import commentRoute from "./routes/comment.route.js";
 import notificationRoute from "./routes/notification.route.js";
 import { connectDB } from "./config/db.js";
 import { ENV } from "./config/env.js";
+import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
 
 
 const app = express();
@@ -19,8 +20,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use(clerkMiddleware());
-
-
 
 app.get("/", (req, res) => {
   res.send("Hello From SERVER , no ARCJET");
@@ -38,7 +37,6 @@ app.use("/api/comment", commentRoute);
 // Notification Routes
 app.use("/api/notifications", notificationRoute);
 
-
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error("Unhandled Error:", err);
@@ -50,7 +48,7 @@ const startServer = async () => {
     await connectDB();
 
     if (ENV.NODE_ENV !== "production") {
-    // Listen on specified PORT in non-production (Local Development) environments
+   // Listen on specified PORT in non-production (Local Development) environments
     app.listen(PORT, () =>
       console.log("Server-is-up & running on PORT:" + PORT)
     );
@@ -60,7 +58,7 @@ const startServer = async () => {
   }
 };
 
-startServer()
+startServer();
 
 // Expost App For Vercel Deployment
 export default app;
