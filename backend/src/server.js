@@ -11,6 +11,7 @@ import { connectDB } from "./config/db.js";
 import { ENV } from "./config/env.js";
 import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
 
+
 const app = express();
 const PORT = ENV.PORT;
 
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use(clerkMiddleware());
 
 app.get("/", (req, res) => {
-  res.send("Hello From SERVER");
+  res.send("Hello From SERVER , no ARCJET");
 });
 
 // User Routes
@@ -47,10 +48,10 @@ const startServer = async () => {
     await connectDB();
 
     if (ENV.NODE_ENV !== "production") {
-      // Listen on specified PORT in non-production (Local Development) environments
-      app.listen(PORT, () =>
-        console.log("Server-is-up & running on PORT:" + PORT)
-      );
+   // Listen on specified PORT in non-production (Local Development) environments
+    app.listen(PORT, () =>
+      console.log("Server-is-up & running on PORT:" + PORT)
+    );
     }
   } catch (error) {
     console.error("Error", error);

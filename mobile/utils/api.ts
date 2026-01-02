@@ -1,0 +1,35 @@
+import axios, { AxiosInstance } from "axios";
+import { useAuth } from "@clerk/clerk-expo";
+
+const API_BASE_URL =
+  "https://clone-twitter-react-native-project.vercel.app/api/";
+// const API_BASE_URL = "http://192.168.1.23:5001";
+// const API_BASE_URL = "http://localhost:5001/api";
+
+export const createApiClient = (getToken: () => Promise<string | null>) => {
+  const api = axios.create({ baseURL: API_BASE_URL });
+
+  api.interceptors.request.use(async (config) => {
+    const token = await getToken();
+    console.log(token);
+    if (token && token.trim()) {
+      config.headers.Authorization = `Bearer ${token}`;
+      config.headers["Content-Type"] = `application/json`;
+    }
+    return config;
+  });
+
+  return api;
+};
+
+export const useApiClient = (): AxiosInstance => {
+  const { getToken } = useAuth();
+  return createApiClient(getToken);
+};
+
+export const userApi = {
+  syncUser: (api: AxiosInstance) => api.post("/users/sync"),
+  getCurrentUser: (api: AxiosInstance) => api.get("/users/me"),
+  updateProfile: (api: AxiosInstance, data: any) =>
+    api.put("/users/profile", data),
+};

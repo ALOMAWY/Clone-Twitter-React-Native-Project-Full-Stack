@@ -22,6 +22,6 @@ router.get("/user/:username", getUserPosts);
 router.post("/", protectedRoute, upload.single("image"), createPost);
 router.post("/:postId/like", protectedRoute, likePost);
 
-router.delete("/:postId", protectedRoute, likePost);
+router.delete("/:postId", protectedRoute, deletePost);
 
 export default router;

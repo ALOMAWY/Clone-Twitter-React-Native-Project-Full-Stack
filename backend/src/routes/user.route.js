@@ -1,20 +1,17 @@
 import express from "express";
 
-import protectedRoute from "../middleware/auth.middleware";
+import protectedRoute from "../middleware/auth.middleware.js";
 import {
   followUser,
   getCurrentProfile,
   syncUser,
   updateProfile,
-} from "../controllers/user.controllar";
+} from "../controllers/user.controllar.js";
 
 const router = express.Router();
 
-
-
 // Pubilc Route
 router.get("/profile/:username", getCurrentProfile);
-
 
 // Protected Routes
 router.put("/profile", protectedRoute, updateProfile);
