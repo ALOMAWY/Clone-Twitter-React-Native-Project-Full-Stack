@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { useAuth } from "@clerk/clerk-expo";
 
 const API_BASE_URL =
-  "https://clone-twitter-react-native-project.vercel.app/api/";
+  "https://clone-twitter-react-native-project-full-stack-774o220mj.vercel.app/api/";
 // const API_BASE_URL = "http://192.168.1.23:5001";
 // const API_BASE_URL = "http://localhost:5001/api";
 
