@@ -16,7 +16,7 @@ router.get("/profile/:username", getCurrentProfile);
 // Protected Routes
 router.put("/profile", protectedRoute, updateProfile);
 
-router.post("/me", protectedRoute, getCurrentProfile);
+router.get("/me", protectedRoute, getCurrentProfile);
 
 router.post("/sync", protectedRoute, syncUser);
 
