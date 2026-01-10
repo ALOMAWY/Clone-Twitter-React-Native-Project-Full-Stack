@@ -24,15 +24,16 @@ export const useCreatePost = () => {
           png: "image/png",
           gif: "image/gif",
           webp: "image/webp",
+          jpg: "image/jpg",
         };
         const mimeType = mimeTypeMap[fileType] || "image/jpeg";
-
         formData.append("image", {
           uri: postData.imageUri,
           name: `image.${fileType}`,
           type: mimeType,
         } as any);
       }
+      console.log(formData.forEach((obj) => console.log(obj)));
 
       return api.post("/posts", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -42,7 +43,7 @@ export const useCreatePost = () => {
       setContent("");
       setSelectedImage(null);
       queryClient.invalidateQueries({ queryKey: ["posts"] });
-      Alert.alert("Success", "Post created successfully!");
+      // Alert.alert("Success", "Post created successfully!");
     },
     onError: (error) => {
       console.error(error);
