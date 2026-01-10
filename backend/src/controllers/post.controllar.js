@@ -1,4 +1,4 @@
-import asyncHandler from "express";
+import asyncHandler from "express-async-handler";
 import { getAuth } from "@clerk/express";
 
 import User from "../models/user.model.js";
@@ -28,12 +28,12 @@ export const getPost = asyncHandler(async (req, res) => {
   const { postId } = req.params;
 
   const post = await Post.findById(postId)
-    .populate("user", "username firstname lastname profilePicture")
+    .populate("user", "username firstName lastName profilePicture")
     .populate({
       path: "comments",
       populate: {
         path: "user",
-        select: "username firstname lastname profilePicture",
+        select: "username firstName lastName profilePicture",
       },
     });
 
@@ -50,12 +50,12 @@ export const getUserPosts = asyncHandler(async (req, res) => {
 
   const posts = await Post.find({ user: user._id })
     .sort({ createdAt: -1 })
-    .populate("user", "username firstname lastname profilePicture")
+    .populate("user", "username firstName lastName profilePicture")
     .populate({
       path: "comments",
       populate: {
         path: "user",
-        select: "username firstname lastname profilePicture",
+        select: "username firstName lastName profilePicture",
       },
     });
 
@@ -96,7 +96,7 @@ export const createPost = asyncHandler(async (req, res) => {
         ],
       });
       imageUrl = uploadResponse.secure_url;
-            console.log("Image File Has Been Uploaded !", imageUrl);
+      console.log("Image File Has Been Uploaded !", imageUrl);
     } catch (uploadError) {
       console.error("Cloudinary Upload Error" + uploadError);
       return res.status(400).json({ error: "Failed to upload image" });
