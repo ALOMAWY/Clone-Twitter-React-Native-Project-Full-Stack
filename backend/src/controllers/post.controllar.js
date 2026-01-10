@@ -80,6 +80,7 @@ export const createPost = asyncHandler(async (req, res) => {
   let imageUrl = "";
 
   if (imageFile) {
+    console.log("Image File :", imageFile);
     try {
       const base64Image = `data:${
         imageFile.mimetype
@@ -95,6 +96,7 @@ export const createPost = asyncHandler(async (req, res) => {
         ],
       });
       imageUrl = uploadResponse.secure_url;
+            console.log("Image File Has Been Uploaded !", imageUrl);
     } catch (uploadError) {
       console.error("Cloudinary Upload Error" + uploadError);
       return res.status(400).json({ error: "Failed to upload image" });
