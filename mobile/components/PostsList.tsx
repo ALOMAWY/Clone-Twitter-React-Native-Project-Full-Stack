@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { usePosts } from "@/hooks/usePosts";
 import PostCard from "./PostCard";
@@ -9,15 +9,8 @@ const PostsList = () => {
   const { currentUser } = useCurrentUser();
   console.log("Current User :", currentUser);
 
-  const {
-    posts,
-    isLoading,
-    error,
-    refetch,
-    toggleLike,
-    deletePost,
-    checkIsLiked,
-  } = usePosts();
+  const { posts, isLoading, error, toggleLike, deletePost, checkIsLiked } =
+    usePosts();
 
   if (isLoading)
     return (

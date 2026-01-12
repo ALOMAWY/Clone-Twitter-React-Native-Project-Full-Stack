@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { Feather, Ionicons } from "@expo/vector-icons";
-import { formatDate, formatDistanceToNow, formatRelative } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { Post, User } from "@/types";
 import { formatNumber } from "@/utils/formatters";
 
