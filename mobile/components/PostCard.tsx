@@ -9,6 +9,7 @@ export interface PostsCardProps {
   post: Post;
   onLike: (postId: string) => void;
   onDelete: (postId: string) => void;
+  onComment: (post: Post) => void;
   isLiked?: boolean;
   currentUser?: User;
 }
@@ -16,6 +17,7 @@ const PostCard = ({
   post,
   onLike,
   onDelete,
+  onComment,
   isLiked,
   currentUser,
 }: PostsCardProps) => {
@@ -90,7 +92,7 @@ const PostCard = ({
           <View className="flex-row w-full justify-evenly items-center">
             <TouchableOpacity
               className="flex-row items-center"
-              onPress={() => {}}
+              onPress={() => onComment(post)}
             >
               <Feather name="message-circle" size={18} color={"#657786"} />
               <Text>{formatNumber(post.comments?.length || 0)}</Text>

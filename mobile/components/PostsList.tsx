@@ -1,16 +1,22 @@
 import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { usePosts } from "@/hooks/usePosts";
 import PostCard from "./PostCard";
 import { Post } from "@/types";
+import CommentModel from "./CommentModel";
 
 const PostsList = () => {
   const { currentUser } = useCurrentUser();
-  console.log("Current User :", currentUser);
 
   const { posts, isLoading, error, toggleLike, deletePost, checkIsLiked } =
     usePosts();
+
+  const [selectedPostId, setSelectedPostId] = useState<null | string>(null);
+
+  const selectedPost = selectedPostId
+    ? posts.find((post: Post) => post._id === selectedPostId)
+    : null;
 
   if (isLoading)
     return (
@@ -21,6 +27,7 @@ const PostsList = () => {
         </Text>
       </View>
     );
+
   if (error)
     return (
       <View className="p-0 items-center">
@@ -46,10 +53,16 @@ const PostsList = () => {
           post={post}
           onLike={toggleLike}
           onDelete={deletePost}
+          onComment={(post) => setSelectedPostId(post._id)}
           currentUser={currentUser}
           isLiked={checkIsLiked(post.likes, currentUser)}
         />
       ))}
+
+      <CommentModel
+        selectedPost={selectedPost}
+        onClose={() => setSelectedPostId(null)}
+      />
     </>
   );
 };
