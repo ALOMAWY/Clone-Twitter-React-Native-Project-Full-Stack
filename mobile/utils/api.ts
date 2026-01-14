@@ -45,5 +45,5 @@ export const postApi = {
 
 export const commentApi = {
   createComment: (api: AxiosInstance, postId: string, content: string) =>
-    api.post(`post/${postId}`, { content }),
+    api.post(`/comment/post/${postId}`, { content }),
 };
