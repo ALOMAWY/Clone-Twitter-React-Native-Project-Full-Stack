@@ -11,7 +11,7 @@ export const getComments = asyncHandler(async (req, res) => {
 
   const comments = await Comment.find({ post: postId })
     .sort({ createdAt: -1 })
-    .populate("user", "firstname lastname username profileImage");
+    .populate("user", "firstName lastName username profileImage");
 
   if (!comments) return res.status(404).json({ error: "Comments not found" });
 
