@@ -77,6 +77,7 @@ export const createPost = asyncHandler(async (req, res) => {
 
   if (!user) return res.status(404).json({ error: "User not found" });
 
+  console.log("file", imageFile);
   let imageUrl = "";
 
   if (imageFile) {

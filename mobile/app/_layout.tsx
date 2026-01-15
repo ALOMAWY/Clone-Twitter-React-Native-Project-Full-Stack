@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import "../global.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { StatusBar } from "expo-status-bar";
 
 export const unstable_settings = {
   anchor: "(tabs)",
@@ -16,7 +17,9 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(auth)"></Stack.Screen>
+          <Stack.Screen name="(tabs)"></Stack.Screen>
         </Stack>
+        <StatusBar style="dark" />
       </QueryClientProvider>
     </ClerkProvider>
   );

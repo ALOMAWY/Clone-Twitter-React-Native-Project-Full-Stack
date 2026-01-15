@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { useAuth } from "@clerk/clerk-expo";
 
 const API_BASE_URL =
-  "https://clone-twitter-react-native-project-full-stack-m54qehlb2.vercel.app/api/";
+  "https://clone-twitter-react-native-project.vercel.app/api/";
 // const API_BASE_URL = "http://192.168.1.23:5001";
 // const API_BASE_URL = "http://localhost:5001/api";
 
@@ -45,5 +45,5 @@ export const postApi = {
 
 export const commentApi = {
   createComment: (api: AxiosInstance, postId: string, content: string) =>
-    api.post(`post/${postId}`, { content }),
+    api.post(`/comment/post/${postId}`, { content }),
 };
