@@ -11,7 +11,7 @@ const router = express.Router();
 // Pubilc Route
 
 // Protected Routes
-router.post("/", protectedRoute, getNotifications);
+router.get("/", protectedRoute, getNotifications);
 router.post("/:notificationId", protectedRoute, deleteNotification);
 
 
