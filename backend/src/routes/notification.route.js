@@ -12,7 +12,7 @@ const router = express.Router();
 
 // Protected Routes
 router.get("/", protectedRoute, getNotifications);
-router.post("/:notificationId", protectedRoute, deleteNotification);
+router.delete("/:notificationId", protectedRoute, deleteNotification);
 
 
 export default router;
