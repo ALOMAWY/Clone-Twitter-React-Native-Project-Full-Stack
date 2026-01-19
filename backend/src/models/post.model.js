@@ -8,7 +8,12 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
 
-    comments: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" },
+        comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
     content: {
       type: String,
       maxLength: 280,
