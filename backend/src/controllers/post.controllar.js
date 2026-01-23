@@ -44,7 +44,7 @@ export const getPost = asyncHandler(async (req, res) => {
 export const getUserPosts = asyncHandler(async (req, res) => {
   const { username } = req.params;
 
-  const user = User.findOne({ username });
+  const user = await User.findOne({ username });
 
   if (!user) return res.status(404).json({ error: "User not found" });
 
